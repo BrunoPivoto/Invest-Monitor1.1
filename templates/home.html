@@ -3,5 +3,10 @@
 {% block title %}Monitor de Investimentos{% endblock %}
 
 {% block content %}
-    Por enquanto é só isso mesmo! :D
+<p>
+    <a href="{% url 'pages:create_stock' %}">Novo Ativo</a>
+</p>
+<p>
+    <a href="{% url 'pages:list_stocks' %}">Lista de Ativos</a>
+</p>
 {% endblock %}
