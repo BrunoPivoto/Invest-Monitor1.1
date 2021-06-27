@@ -2,11 +2,12 @@
 {% block content %}
     <form method="POST">
         {% csrf_token %}
-        {{ form }}
+        {% load crispy_forms_filters %}
+        {{ form|crispy }}
         <button type="submit">Salvar</button>
     </form>
 
     {% if stock %}
-    <a href="{% url 'delete_stock' stock.id %">Deletar</a>
+    <a href="{% url 'pages:delete_stock' stock.id %}">Deletar</a>
     {% endif %}
 {% endblock %}

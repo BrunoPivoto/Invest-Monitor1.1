@@ -15,7 +15,7 @@ def create_stock(request):
     form = StockForm(request.POST or None)
     if form.is_valid():
         form.save()
-        return redirect('list_stocks')
+        return redirect('pages:list_stocks')
 
     return render(request, 'stocks-form.html', {'form': form})  
 
@@ -24,16 +24,16 @@ def edit_stock(request, id):
     form = StockForm(request.POST or None, instance=stock)
     if form.is_valid():
         form.save()
-        return redirect('list_stocks')
+        return redirect('pages:list_stocks')
 
-    return render(request, 'stocks-forms.html', {'form': form, 'stock': stock})  
+    return render(request, 'stocks-form.html', {'form': form, 'stock': stock})  
 
-def delete_stock(request):
+def delete_stock(request, id):
     stock = Stock.objects.get(id=id)
 
     if request.method == 'POST':
         stock.delete()
-        return redirect('list_stocks')
+        return redirect('pages:list_stocks')
 
     return render(request, 'stocks-delete-confirm.html', {'stocks': stock})  
 
