@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Salvar</button>
+    </form>
+
+    {% if stock %}
+    <a href="{% url 'delete_stock' stock.id %">Deletar</a>
+    {% endif %}
+{% endblock %}
